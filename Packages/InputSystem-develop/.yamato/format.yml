@@ -1,0 +1,15 @@
+check_formatting:
+  name : Check formatting
+  agent:
+    type: Unity::VM::osx
+    image: package-ci/mac:latest
+    flavor: m1.mac
+  commands:
+    - hg clone -b stable http://hg-mirror-slo.hq.unity3d.com/unity-extra/unity-meta
+    - perl unity-meta/Tools/Format/format.pl Assets Packages --dry-run
+  triggers:
+    cancel_old_ci: true
+    pull_requests:
+      - targets:
+          only:
+            - "develop"
