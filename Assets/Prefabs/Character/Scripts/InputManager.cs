@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Interfaz que nos permite comunicarnos con el plugin de unity "input system"
+
 public class InputManager : MonoBehaviour
 {
     private static InputManager _instance;

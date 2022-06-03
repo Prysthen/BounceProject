@@ -13,6 +13,7 @@ public class CharacterMovement : MonoBehaviour
     private bool groundedPlayer;
     private InputManager inputManager;
     private Transform cameraTransform;
+    private bool wasGrounded = false;
 
     // Start is called before the first frame update
     private void Start()
@@ -27,29 +28,15 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        groundedPlayer = controller.isGrounded;
-        if (groundedPlayer && playerVelocity.y < 0)
-        {
-            playerVelocity.y = 0f;
+        Vector2 inputDirection = inputManager.GetPlayerMovement();
+        Vector3 direction = new Vector3(inputDirection.x, 0f, inputDirection.y);
+
+        if(direction.magnitude >= 0.1f)
+        {   
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
+
+            controller.Move(direction * playerSpeed * Time.deltaTime);
         }
-
-        Vector2 inputValues = inputManager.GetPlayerMovement();
-        Vector3 movement = new Vector3(inputValues.x, 0f, inputValues.y);
-        movement = cameraTransform.forward * movement.z + cameraTransform.right * movement.x;
-        controller.Move(movement * Time.deltaTime * playerSpeed);
-
-        if (movement != Vector3.zero)
-        {
-           // gameObject.transform.forward = movement;
-        }
-
-        if (inputManager.GetJump() && groundedPlayer)
-        {
-            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
-        }
-        
-        playerVelocity.y += gravityValue * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime);
-
     }
 }
