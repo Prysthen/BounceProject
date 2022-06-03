@@ -30,13 +30,26 @@ public class CharacterMovement : MonoBehaviour
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {
-            playerVelocity.y = 0;
+            playerVelocity.y = 0f;
         }
 
         Vector2 inputValues = inputManager.GetPlayerMovement();
         Vector3 movement = new Vector3(inputValues.x, 0f, inputValues.y);
         movement = cameraTransform.forward * movement.z + cameraTransform.right * movement.x;
         controller.Move(movement * Time.deltaTime * playerSpeed);
+
+        if (movement != Vector3.zero)
+        {
+           // gameObject.transform.forward = movement;
+        }
+
+        if (inputManager.GetJump() && groundedPlayer)
+        {
+            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+        }
+        
+        playerVelocity.y += gravityValue * Time.deltaTime;
+        controller.Move(playerVelocity * Time.deltaTime);
 
     }
 }
