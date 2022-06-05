@@ -20,9 +20,11 @@ public class Gun : MonoBehaviour
     [SerializeField]private Color primaryColor;
     [SerializeField]private Color secondaryColor;
     [SerializeField]private GameObject gunModel;
+    private Animator animator;
     private Material material;
     private InputManager inputManager;
     private float nextTimeToFire = 0f;
+
    
 
     // Start is called before the first frame update
@@ -31,6 +33,7 @@ public class Gun : MonoBehaviour
         inputManager = InputManager.Instance;
         material = gunModel.GetComponent<Renderer>().material;
         material.SetColor("_Emission_Color", primaryColor);
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -53,6 +56,7 @@ public class Gun : MonoBehaviour
 
     void Shoot(bool isPrimaryFire)
     {   
+        animator.Play("Base Layer.Armature_shoot_open", 0, 0f);
         Color emissionColor = isPrimaryFire ?  primaryColor : secondaryColor;
         material.SetColor("_Emission_Color", emissionColor);
         particles.startColor = emissionColor;

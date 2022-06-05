@@ -5857,3 +5857,26 @@ MonoBehaviour:
   force: 200
   fireRate: 15
   particles: {fileID: 7571846}
+  primaryColor: {r: 1, g: 0.5167899, b: 0, a: 0}
+  secondaryColor: {r: 0, g: 0.19647932, b: 1, a: 0}
+  gunModel: {fileID: 0}
+--- !u!95 &4082047118223500062
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6902472681774173971}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ead0cf33d4095174e9596a62cb4e1e0a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
