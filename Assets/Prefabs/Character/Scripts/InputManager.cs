@@ -61,5 +61,9 @@ public class InputManager : MonoBehaviour
     {
         return playerControls.Playing.Interact.triggered;
     }
+    public bool GetMenu()
+    {
+        return playerControls.Playing.Menu.triggered;
+    }
 
 }

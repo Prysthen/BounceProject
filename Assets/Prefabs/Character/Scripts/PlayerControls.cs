@@ -80,6 +80,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Menu"",
+                    ""type"": ""Button"",
+                    ""id"": ""6f15be12-8efc-4903-9615-a4e36edd7d0d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -192,6 +201,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cbe0a21a-b4fc-45a0-b108-2fd9f07a2838"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -206,6 +226,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Playing_SecondaryWeapon = m_Playing.FindAction("Secondary Weapon", throwIfNotFound: true);
         m_Playing_Interact = m_Playing.FindAction("Interact", throwIfNotFound: true);
         m_Playing_Look = m_Playing.FindAction("Look", throwIfNotFound: true);
+        m_Playing_Menu = m_Playing.FindAction("Menu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -271,6 +292,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Playing_SecondaryWeapon;
     private readonly InputAction m_Playing_Interact;
     private readonly InputAction m_Playing_Look;
+    private readonly InputAction m_Playing_Menu;
     public struct PlayingActions
     {
         private @PlayerControls m_Wrapper;
@@ -281,6 +303,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @SecondaryWeapon => m_Wrapper.m_Playing_SecondaryWeapon;
         public InputAction @Interact => m_Wrapper.m_Playing_Interact;
         public InputAction @Look => m_Wrapper.m_Playing_Look;
+        public InputAction @Menu => m_Wrapper.m_Playing_Menu;
         public InputActionMap Get() { return m_Wrapper.m_Playing; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -308,6 +331,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Look.started -= m_Wrapper.m_PlayingActionsCallbackInterface.OnLook;
                 @Look.performed -= m_Wrapper.m_PlayingActionsCallbackInterface.OnLook;
                 @Look.canceled -= m_Wrapper.m_PlayingActionsCallbackInterface.OnLook;
+                @Menu.started -= m_Wrapper.m_PlayingActionsCallbackInterface.OnMenu;
+                @Menu.performed -= m_Wrapper.m_PlayingActionsCallbackInterface.OnMenu;
+                @Menu.canceled -= m_Wrapper.m_PlayingActionsCallbackInterface.OnMenu;
             }
             m_Wrapper.m_PlayingActionsCallbackInterface = instance;
             if (instance != null)
@@ -330,6 +356,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
+                @Menu.started += instance.OnMenu;
+                @Menu.performed += instance.OnMenu;
+                @Menu.canceled += instance.OnMenu;
             }
         }
     }
@@ -342,5 +371,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnSecondaryWeapon(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
+        void OnMenu(InputAction.CallbackContext context);
     }
 }
