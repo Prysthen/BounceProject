@@ -16,7 +16,8 @@ public class Gun : MonoBehaviour
     [SerializeField]private Camera fpsCam;
     [SerializeField]private float force = 200f;
     [SerializeField]private float fireRate = 15f;
-    [SerializeField]private ParticleSystem particles;
+    [SerializeField]private ParticleSystem primaryParticles;
+    [SerializeField]private ParticleSystem secondaryParticles;
     [SerializeField]private Color primaryColor;
     [SerializeField]private Color secondaryColor;
     [SerializeField]private GameObject gunModel;
@@ -61,10 +62,10 @@ public class Gun : MonoBehaviour
 
     void Shoot(bool isPrimaryFire)
     {   
+        ParticleSystem particles = isPrimaryFire ? primaryParticles : secondaryParticles;
         animator.SetBool("Shooting", true);
-        Color emissionColor = isPrimaryFire ?  primaryColor : secondaryColor;
+        Color emissionColor = isPrimaryFire ? primaryColor : secondaryColor;
         material.SetColor("_Emission_Color", emissionColor);
-        particles.startColor = emissionColor;
         particles.Play();
         ShootPayload payload = new ShootPayload();
         payload.caster = fpsCam.transform.parent.gameObject;
