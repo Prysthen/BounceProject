@@ -16,6 +16,7 @@ public class CharacterMovement : MonoBehaviour
     private InputManager inputManager;
     private Vector3 velocity;
     private Transform cameraTransform;
+    private Vector3 impact = Vector3.zero;
 
     // Start is called before the first frame update
     private void Start()
@@ -51,5 +52,21 @@ public class CharacterMovement : MonoBehaviour
 
         velocity.y += gravityValue * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+        if (impact.magnitude > 0.2)
+        {
+            controller.Move(impact * Time.deltaTime);
+        }
+        impact = Vector3.Lerp(impact, Vector3.zero, 5*Time.deltaTime);
+    }
+
+    public void AddImpact(Vector3 direction, float force)
+    {
+        Vector3 dir = direction.normalized;
+        if (dir.y < 0 ) 
+        {
+            dir.y *= -1;
+            impact += dir * force;
+        }
+        Debug.Log(impact);
     }
 }

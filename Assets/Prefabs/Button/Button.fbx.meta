@@ -1,25 +1,18 @@
 fileFormatVersion: 2
-guid: f39215176dbe5a44d92b80bedc8bd253
+guid: 332ce7fa8bd4dcf4bbbd5bf31fa36e1e
 ModelImporter:
   serializedVersion: 21202
-  internalIDToNameTable:
-  - first:
-      74: -1271467930334028141
-    second: Armature|close_gun
-  - first:
-      74: 7793916483809424541
-    second: Armature|shoot_open
-  - first:
-      74: 5956080383553883048
-    second: Armature|shooting_disk
-  - first:
-      74: 133305115641512447
-    second: Armature|shooting_ray
+  internalIDToNameTable: []
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Gun_Material
+      name: Button
+    second: {fileID: 2100000, guid: c71685efb8724714d8fbe4776e832901, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plastic
     second: {fileID: 2100000, guid: c71685efb8724714d8fbe4776e832901, type: 2}
   materials:
     materialImportMode: 2
