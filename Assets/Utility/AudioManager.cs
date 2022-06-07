@@ -1,6 +1,8 @@
+using System.Collections;
 using UnityEngine.Audio;
 using System;
 using UnityEngine;
+
 
 public class AudioManager : MonoBehaviour
 {
@@ -37,7 +39,7 @@ public class AudioManager : MonoBehaviour
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if(s == null)
         {
-            Debug.LogWarning("La canción " + " no se encuentra.");
+            Debug.Log("La canción " + name + " no se encuentra.");
             return;
         }
         s.source.Play();
@@ -45,7 +47,24 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        //meter aqui el tema de inicio: Play("*inserte aqui el nombre de la cancion*"); // Serializar una variable Sound donde meter la cancion
+        StartCoroutine(PlayRandomSong());
+        //Play("MainTheme");
+
+      
+    
     }
-  
+    void Update()
+    {
+      
+    }
+
+    IEnumerator PlayRandomSong()
+    {
+        Sound currentSong;
+       
+        currentSong = sounds[UnityEngine.Random.Range(0, sounds.Length - 1)];
+        Play(currentSong.name);
+        yield return new WaitForSeconds(currentSong.clip.length);
+        
+    }
 }
