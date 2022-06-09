@@ -63,7 +63,8 @@ public class Gun : MonoBehaviour
     void Shoot(bool isPrimaryFire)
     {   
         ParticleSystem particles = isPrimaryFire ? primaryParticles : secondaryParticles;
-        animator.SetBool("Shooting", true);
+        //animator.SetBool("Shooting", true);
+        StartCoroutine(ShootAnimation());
         Color emissionColor = isPrimaryFire ? primaryColor : secondaryColor;
         material.SetColor("_Emission_Color", emissionColor);
         particles.Play();
@@ -79,6 +80,12 @@ public class Gun : MonoBehaviour
                 target.Impact(payload);
             }
         }
+    }
+
+    IEnumerator ShootAnimation()
+    {
+        animator.Play("Shoot_open", 0, 0.0f);
+        yield return new WaitForSeconds(5);
     }
 
 }
