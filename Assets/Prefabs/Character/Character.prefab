@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7571844}
   - component: {fileID: 7571846}
   - component: {fileID: 7571845}
-  - component: {fileID: 2079570439}
   m_Layer: 6
   m_Name: Primary Fire
   m_TagString: Untagged
@@ -287,7 +286,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 4
+      scalar: 16
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4872,18 +4871,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &2079570439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7571843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a3c598f8c462884f9a8d204db2df9d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &364491441
 GameObject:
   m_ObjectHideFlags: 0
@@ -5042,13 +5029,13 @@ MonoBehaviour:
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 5
-    NearClipPlane: 0.3
+    NearClipPlane: 0.1
     FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0664606, y: 1}
+    m_SensorSize: {x: 1.6811819, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -5247,7 +5234,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.1
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -5660,7 +5647,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 8
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -10584,7 +10571,7 @@ Transform:
   m_GameObject: {fileID: 7343599958988414753}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 963194228}
@@ -10624,7 +10611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b146cf5235a1e45a10ad31b6671cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 9
+  playerSpeed: 4
   jumpHeight: 2
   gravityValue: -9.81
   groundDistance: 0.4
