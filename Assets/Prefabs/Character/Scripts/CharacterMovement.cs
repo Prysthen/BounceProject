@@ -67,6 +67,6 @@ public class CharacterMovement : MonoBehaviour
             dir.y *= -1;
             impact += dir * force;
         }
-        Debug.Log(impact);
+        Debug.Log("Impacto: " + impact + " Fuerza: " + force);
     }
 }

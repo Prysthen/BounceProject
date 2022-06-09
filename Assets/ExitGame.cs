@@ -14,4 +14,9 @@ public class ExitGame : MonoBehaviour
     {
         SceneManager.LoadScene("Menu");
     }
+    void Start()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
 }

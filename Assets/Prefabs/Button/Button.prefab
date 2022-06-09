@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6438946707042354689}
   - component: {fileID: 7995121337182013860}
   - component: {fileID: 5264874226555403630}
-  - component: {fileID: 2347567367188576647}
   - component: {fileID: -4621455661870216627}
   m_Layer: 3
   m_Name: Button
@@ -87,18 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2347567367188576647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5913344262792944827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4e7e882528edb845bf207e52a42430a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &-4621455661870216627
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -170,4 +157,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606345aaa11396445b027c2ba579775c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObject: {fileID: 0}
+  go: {fileID: 0}

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class InteractAutomatic : MonoBehaviour
 {
-    [SerializeField]private GameObject gameObject;
+    [SerializeField]private GameObject go;
     private IActivable activable;
 
     private void Awake()
     {
-        activable = gameObject.GetComponent<IActivable>();
+        activable = go.GetComponent<IActivable>();
     }
 
     private void OnTriggerEnter(Collider collider)
